@@ -1,0 +1,27 @@
+{{define "error"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="../static/css/error.css"> <!-- Assure-toi que le chemin vers ton fichier CSS est correct -->
+</head>
+<body>
+    <div id="error-container">
+        <div id="error-box">
+            <div id="error">
+                <h1>4<img src="../static/img/pikapika.png" class="pik"></img>4</h1>
+            </div>
+            <div id="error-message">
+                <p id="AnError">An Error has occured !</p>
+                <p id="Wewere">We were unable to find the path.</p>
+            </div>
+            <div id="error-link">
+                <a href="/accueil" id="home-link">Go to Homepage</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{{end}}

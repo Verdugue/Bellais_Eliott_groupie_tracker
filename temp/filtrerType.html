@@ -1,0 +1,81 @@
+{{define "filtrerType"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats de recherche</title>
+    <link rel="stylesheet" href="../static/css/filtrer.css">
+</head>
+<header class="header-container">
+    <div class="header-left">
+        <a href="/accueil"><img class="logo-site" src="../static/img/pokeapi.png" alt="Logo"></a>
+    </div>
+    <div class="header-middle">
+        <img class="pikapika" src="../static/img/logo.png" alt="Pikachu">
+    </div>
+    <div class="header-right">
+        <div class="search">
+            <form action="/search" method="get" class="search-form">
+                <input type="text" class="searchTerm" name="query" placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                    <img class="pokesearch" src="../static/img/pokesearch.png">
+                </button>
+            </form>
+        </div>
+    </div>
+</header>
+<body>
+    <h1>Choisissez un type de Pokémon</h1>
+    <div class="container">
+        <div class="container2">
+            <form class="form-type" action="/filtrerType" method="post">
+            {{range .Type}}
+                <div class="type-option"> <!-- conteneur pour chaque option -->
+                    <input type="radio" class="bouton-type" id="type-{{.}}" name="type" value="{{.}}">
+                    <label class="text-type" for="type-option">{{.}}</label>
+                </div>
+            {{end}}
+        </div>
+    <button class="submit" type="submit">Recherche</button>
+</div>   
+            
+            </form>
+         
+      {{if .Pokemons}}
+      <h2>Résultats :</h2>
+      
+      <section id="pokemon-container">
+        {{ range .Pokemons }}
+        <div>
+            <a href="/pokemon/{{.Name}}" class="pokemon-card-link">
+                <div class="pokemon-card">
+                    <div class="pokemon-image">
+                        <img src="{{.Image}}" alt="image de {{.Name}}" class="image-pokemon">
+                    </div>
+                    <div class="pokemon-name">{{.Name}}</div>
+                    <div class="pokemon-type">
+                        {{range .Type}}
+                        <a class="con" href="https://pokemon.fandom.com/wiki/{{.}}_type"> <img class="type"src="../static/img/{{.}}.png"  class="image-pokemon" alt="{{.}} type"></a>
+                        {{end}}
+                    </div>
+                </div>
+            </a>
+        </div>
+    {{ end }}
+    </section>
+    {{end}}
+</body>
+<div class="sousbar2">
+    <footer class="site-footer">
+        
+        <div class="footer-left">
+            <p>eliott°ink</p>
+        </div>
+        <div class="footer-right">
+            <a href="/mentions-legales">Mentions légales</a>
+            <a href="/travail">Travail</a>
+        </div>
+    </footer>
+    </div>
+</html>
+{{end}}

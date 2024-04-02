@@ -1,0 +1,228 @@
+/* header */
+
+
+header {
+  background-color:#3466AF;
+  height:150px;
+  margin-top:-10px;
+  margin-right:-0px;
+  margin-left:-10px;
+}
+
+.header-container {
+  justify-content: space-between;
+  display: flex;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.search {
+display:flex;
+width: 400px;
+position: relative;
+}
+
+.search-form {
+width:600px;
+display:flex;
+margin-bottom:0px;
+}
+
+.searchTerm {
+width: 70%;
+border: 3px solid #ffffff;
+border-right: none;
+padding: 5px;
+height: 35px;
+border-radius: 5px 0 0 5px;
+outline: none;
+color: #9DBFAF;
+}
+
+.searchTerm:focus{
+color: #00B4CC;
+}
+
+
+
+.wrap{
+width: 30%;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.search{
+margin-top:50px;
+margin-right:10px;
+
+
+}
+.searchButton {
+width: 50px;
+height: 50px;
+margin-bottom:15px;
+border: 1px solid #00B4CC;
+background: #00B4CC;
+color: #fff;
+border-radius: 0 5px 5px 0;
+cursor: pointer;
+font-size: 20px;
+}
+
+.searchButton:hover{
+background-image:"/static/img/pokeball.gif";
+
+}
+
+.pokesearch{
+width:30px;
+margin-top:6px;
+
+}
+
+.header-middle {
+  width: 160px;
+  margin-right: -50px;
+}
+
+.logo-site {
+  margin-left: 40px;
+  margin-top: 20px;
+  width: 250px;
+}
+
+.pikapika {
+  width: 140px;
+  margin-right: 100px;
+}
+
+
+
+/* main */
+
+
+
+
+.image-pokemon {
+width:100px;
+
+}
+
+
+
+.type {
+width:50px; 
+
+}
+
+#pokemon-container {
+  background-color: #FFCB09;
+  background-color: white;
+  border-bottom: 1rem solid;
+  width: 1405px;
+  display: grid;
+  border-bottom: solid;
+  margin-top: 545px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  gap: 3em;
+  padding: 1em;
+  margin: 0 auto;
+}
+
+.pokemon-card {
+  display: flex;
+  border-bottom: 3px solid grey;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 50px;
+  padding: 1em;
+  background-color: #e2e2e2;
+}
+
+.pokemon-image {
+  margin-left: 15px;
+  width: 60%;
+  max-width: 150px;
+  margin-bottom: 1em;
+}
+
+.pokemon-name {
+  font-family: 'MaFont';
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.pokemon-type {
+  margin-bottom: 0.5em;
+}
+
+.pokemon-card-link {
+  display: inline-block;
+  margin: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sousbar {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.coeur {
+  width: 30px;
+}
+
+.poubelle {
+  width:25px;
+  
+}
+
+/* footer */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  margin-left:-8px;
+  width: 99%;
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+}
+
+.footer-right a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.footer-right a:hover {
+  text-decoration: underline;
+}
+
+.sousbar2 {
+   position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    z-index: 10;
+    width:100%;
+  
+}

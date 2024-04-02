@@ -1,0 +1,79 @@
+ {{define "pokemon"}}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/css/detail.css">
+</head>
+<header class="header-container">
+    <div class="header-left">
+        <a href="/accueil"><img class="logo-site" src="../static/img/pokeapi.png" alt="Logo"></a>
+    </div>
+    <div class="header-middle">
+        <img class="pikapika" src="../static/img/logo.png" alt="Pikachu">
+    </div>
+    <div class="header-right">
+        <div class="search">
+            <form action="/search" method="get" class="search-form">
+                <input type="text" class="searchTerm" name="query" placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                    <img class="pokesearch" src="../static/img/pokesearch.png">
+                </button>
+            </form>
+        </div>
+    </div>
+</header>
+<body>
+    <div class="all">
+        <div class="right-container-detail">
+                <div class="image-pokemon">
+                    <img class="image" src="{{.Image}}" alt="image de {{.Name}}">
+                </div>
+        </div>
+        <div class="left-container-detail">
+            <div class="father-information">
+                <div class="title">
+                    <div class="title-id">
+                        No. {{.ID}}
+                    </div>
+                    
+                    <p class="name-pokemon">{{.Name}}</p>
+                    
+                </div>
+                <div class="text">
+                <p class="type-title">Types</h3>
+                <p class="attaque-title">Attaques</p>
+                </div>
+                <div class="pokemon-type">
+                    <div class="les-types">
+                    {{range .Type}}
+                        <a href="https://pokemon.fandom.com/wiki/{{.}}_type"> <img class="type"src="../static/img/{{.}}.png"  class="image-pokemon" alt="{{.}} type"></a>
+                    {{end}}
+                    </div>
+                    
+                    
+                    
+                    <select class="attack-list" name="abilities" id="abilities-dropdown">
+                        {{range .Abilities}}
+                            <option value="{{.Name}}">{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="stat">
+                    <img class="stat-poke" src="../static/img/taille.png"><p div="text-stat">{{.Height}} dm</p>
+                    <img class="stat-poke2" src="../static/img/poid.png"><p div="text-stat"> {{.Weight}} Hg</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="site-footer">
+    <div class="footer-left">
+        <p>eliott°ink</p>
+    </div>
+    <div class="footer-right">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/travail">Travail</a>
+    </div>
+</footer>
+<html>
+ {{end}}

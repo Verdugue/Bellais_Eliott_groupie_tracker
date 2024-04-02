@@ -1,0 +1,63 @@
+{{define "starter"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pokémon Starters</title>
+    <link rel="stylesheet" href="../static/css/starter.css">
+</head>
+<header class="header-container">
+    <div class="header-left">
+        <a href="/accueil"><img class="logo-site" src="../static/img/pokeapi.png" alt="Logo"></a>
+    </div>
+    <div class="header-middle">
+        <img class="pikapika" src="../static/img/logo.png" alt="Pikachu">
+    </div>
+    <div class="header-right">
+        <div class="search">
+            <form action="/search" method="get" class="search-form">
+                <input type="text" class="searchTerm" name="query" placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                    <img class="pokesearch" src="../static/img/pokesearch.png">
+                </button>
+            </form>
+        </div>
+    </div>
+</header>
+<body>
+    
+    <h1>Pokémon Starters</h1>
+    <div id="pokemon-container">
+        
+        {{range .Pokemons}}
+        <div class="pok">
+            <a href="/pokemon/{{.Name}}" class="pokemon-card-link">
+                <div class="pokemon">
+                    <h2 class="neuille">{{.Name}}</h2>
+                    <img class="image" src="{{.Image}}" alt="{{.Name}}">
+                </div>
+            </a>
+        </div>
+        {{end}}
+    </div>
+    <div class="pagination">
+        {{if not .IsFirst}}
+            <a class="bouton-pag" href="/starters?page={{.PrevPage}}">Prev</a>
+        {{end}}
+        {{if not .IsLast}}
+            <a class="bouton-pag" href="/starters?page={{.NextPage}}">Next</a>
+        {{end}}
+    </div>
+    
+</body>
+<footer class="site-footer">
+    <div class="footer-left">
+        <p>eliott°ink</p>
+    </div>
+    <div class="footer-right">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/travail">Travail</a>
+    </div>
+</footer>
+</html>
+{{end}}

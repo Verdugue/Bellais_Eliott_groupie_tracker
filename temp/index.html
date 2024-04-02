@@ -1,0 +1,107 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> API </title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+<header class="header-container">
+    <div class="header-left">
+        <a href="/accueil"><img class="logo-site" src="../static/img/pokeapi.png" alt="Logo"></a>
+        
+
+    </div>
+    <div class="header-middle">
+        <img class="pikapika" src="../static/img/logo.png" alt="Pikachu">
+    </div>
+    <div class="header-right">
+        <div class="search">
+            <a href="/favorites" class="button"><img class="coeur" src="../static/img/coeur.png"></a>
+            <form action="/search" method="get" class="search-form">
+                <input type="text" class="searchTerm" name="query" placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                    <img class="pokesearch" src="../static/img/pokesearch.png">
+                </button>
+            </form>
+        </div>
+    </div>
+</header>
+<body>
+<div class="father-container">
+    
+    <form class="generate" action="/accueil" method="get">
+        
+        <div class="all-container">
+            <div class="all">
+                <button class="genrate-style" type="submit">
+                    <img class="fleche" src="../static/img/fleche.png" alt="fleche" />
+                    Générer 20 nouveaux Pokémon
+                </button>
+            </form>
+                <button class="genrate-style3" type="submit">
+                    <a href="/filtrerType" class="genrate-style2">Filtrer par type.</a>
+                </button>
+
+                <button class="genrate-style4" type="submit">
+                    <a href="/starter" class="genrate-style3">Les Starters.</a>
+                </button>
+        </div>
+            <section id="pokemon-container">
+                {{ range . }}
+                <div>
+                    <a href="/pokemon/{{.Name}}" class="pokemon-card-link">
+                        <div class="pokemon-card">
+                            <div class="pokemon-image">
+                                <img src="{{.Image}}" alt="image de {{.Name}}" class="image-pokemon">
+                            </div>
+                            <div class="pokemon-name">{{.Name}}</div>
+                            <div class="pokemon-type">
+                                {{range .Type}}
+                                <a class="con" href="https://pokemon.fandom.com/wiki/{{.}}_type"><img class="type"src="../static/img/{{.}}.png"  class="image-pokemon" alt="{{.}} type"></a>
+                                {{end}}
+                            </div>
+                        </div>
+                    </a>
+                    <div class="sousbar">
+                        <form action="/add-favorite" method="POST">
+                            <input type="hidden" name="pokemonId" value="{{.ID}}"> <!-- Remplacez {{.ID}} par l'ID du Pokémon -->
+                            <button type="submit">
+                                <img class="coeur" src="../static/img/coeur.png">
+                            </button>
+                        </form>
+                        
+                </div>
+                </div>
+                
+            {{ end }}
+            </section>
+        </div>
+</div>
+
+
+<footer class="site-footer">
+    <div class="footer-left">
+        <p>eliott°ink</p>
+    </div>
+    <div class="footer-right">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/travail">Travail</a>
+    </div>
+</footer>
+<script>
+    document.getElementById('addToFavBtn').addEventListener('click', function() {
+        var pokemonId = this.getAttribute('data-id');
+        fetch('/add-favorite?id=' + pokemonId, { method: 'POST' })
+            .then(response => {
+                if (response.ok) {
+                    alert('Pokémon ajouté aux favoris!');
+                } else {
+                    alert('Erreur lors de l\'ajout aux favoris.');
+                }
+            });
+    });
+    </script>   
+
+</html>
+{{end}}
